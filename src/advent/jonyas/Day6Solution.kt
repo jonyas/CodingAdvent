@@ -28,7 +28,7 @@ private fun findInfiniteLoopIteration(memory: IntArray,
 
   var iteration = 0
 
-  val stateSet = LinkedHashSet<String>()
+  val stateSet = linkedSetOf<String>()
   // Not contains
   while (!stateSet.contains(memory.contentToString())) {
     // save current state
@@ -38,7 +38,8 @@ private fun findInfiniteLoopIteration(memory: IntArray,
     // Increase counter
     iteration++
   }
-
+  // LinkedSet keeps the addition order. To make it faster we should save it in hashmap and store
+  // the position
   return iteration to (iteration - stateSet.indexOf(memory.contentToString()))
 }
 
