@@ -1,2 +1,4 @@
 CodingAdvent.iml
 .idea/*
+*.class
+out/*
