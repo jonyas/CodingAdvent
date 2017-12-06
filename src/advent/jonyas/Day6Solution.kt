@@ -2,7 +2,7 @@ package advent.jonyas
 
 import java.io.File
 
-private fun indexForCircularString(array: IntArray, index: Int): Int {
+private fun indexForCircularIntArray(array: IntArray, index: Int): Int {
   if (index < 0) {
     throw IllegalArgumentException()
   }
@@ -76,11 +76,12 @@ private fun part1And2(fileName: String) {
       findInfiniteLoopIteration(numbers,
       findMaxItemLocation(),
       { memory, indexToDistribute ->
+        // Distribute from given index + 1. Setting given index to 0.
         var itemsToDistribute = memory[indexToDistribute]
         var currentIndex = indexToDistribute
-        memory[indexForCircularString(memory, currentIndex)] = 0
+        memory[indexForCircularIntArray(memory, currentIndex)] = 0
         while (itemsToDistribute > 0) {
-          memory[indexForCircularString(memory, ++currentIndex)] += 1
+          memory[indexForCircularIntArray(memory, ++currentIndex)] += 1
           itemsToDistribute--
         }
       })
